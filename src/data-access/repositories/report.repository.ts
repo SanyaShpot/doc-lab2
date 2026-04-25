@@ -25,4 +25,15 @@ export class ReportRepository implements IReportRepository {
       relations: ['indicators'],
     });
   }
+
+  async findById(id: number): Promise<FinancialReport | null> {
+    return this.repo.findOne({
+      where: { id },
+      relations: ['company', 'indicators'],
+    });
+  }
+
+  async delete(id: number): Promise<void> {
+    await this.repo.delete(id);
+  }
 }
