@@ -63,4 +63,14 @@ export class ImportService {
 
     console.log(`Imported ${rows.length} records`);
   }
+
+  async importIfEmpty(filePath: string): Promise<boolean> {
+    const existing = await this.indicatorRepo.count();
+    if (existing > 0) {
+      return false;
+    }
+
+    await this.importFromCsv(filePath);
+    return true;
+  }
 }

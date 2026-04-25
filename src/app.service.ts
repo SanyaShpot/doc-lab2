@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
+import { renderHomePage } from './presentation/views/home.view';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
+  getHomePage(): string {
+    return renderHomePage();
   }
 }

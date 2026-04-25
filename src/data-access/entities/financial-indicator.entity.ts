@@ -15,6 +15,6 @@ export class FinancialIndicator {
   @Column()
   currency: string;
 
-  @ManyToOne(() => FinancialReport, report => report.indicators)
+  @ManyToOne(() => FinancialReport, report => report.indicators, { onDelete: 'CASCADE' })
   report: FinancialReport;
 }
